@@ -1120,7 +1120,7 @@ export class TaskTreeDataProvider implements TreeDataProvider<TreeItem>
                 return -1;
             }
             if (a.label && b.label) {
-                return a.label?.localeCompare(b.label?.toString());
+                return a.label?.toString().localeCompare(b.label?.toString());
             }
             return 0;
         });
@@ -1283,9 +1283,9 @@ export class TaskTreeDataProvider implements TreeDataProvider<TreeItem>
         {
             if (item instanceof TaskFolder)
             {
-                const isFav = item.label?.includes(constants.FAV_TASKS_LABEL);
-                const isLast = item.label?.includes(constants.LAST_TASKS_LABEL);
-                const isUser = item.label?.includes(constants.USER_TASKS_LABEL);
+                const isFav = item.label?.toString().includes(constants.FAV_TASKS_LABEL);
+                const isLast = item.label?.toString().includes(constants.LAST_TASKS_LABEL);
+                const isUser = item.label?.toString().includes(constants.USER_TASKS_LABEL);
                 const tmp: any = me.getParent(item);
                 assert(tmp === null, "Invaid parent type, should be null for TaskFolder");
                 log.write(logPad + "Task Folder " + item.label + ":  " + (!isFav && !isLast && !isUser ?
